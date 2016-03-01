@@ -1,16 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Linq;
+using BusyRoom.Models;
 using Microsoft.AspNet.Mvc;
+using Microsoft.Data.Entity;
 
 namespace BusyRoom.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly BusyRoomContext _dbContext;
+
+        public HomeController(BusyRoomContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
+
         public IActionResult Index()
         {
-            return View();
+            var rooms = _dbContext.Rooms.Include(n => n.OccupyStates).FirstOrDefault();
+            return View(rooms);
         }
 
         public IActionResult About()
