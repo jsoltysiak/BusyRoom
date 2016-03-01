@@ -1,4 +1,5 @@
 ﻿using BusyRoom.Models;
+using BusyRoom.TestData;
 using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -29,10 +30,12 @@ namespace BusyRoom
             services.AddEntityFramework()
                 .AddSqlServer()
                 .AddDbContext<BusyRoomContext>();
+
+            services.AddTransient<BusyRoomDbSeed>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, BusyRoomDbSeed seeder)
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
@@ -52,6 +55,8 @@ namespace BusyRoom
             app.UseStaticFiles();
 
             app.UseMvc(routes => { routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}"); });
+
+            seeder.EnsureSeedData();
         }
 
         // Entry point for the application.

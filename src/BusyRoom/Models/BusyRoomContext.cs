@@ -4,6 +4,10 @@ namespace BusyRoom.Models
 {
     public class BusyRoomContext : DbContext
     {
+        public BusyRoomContext()
+        {
+            Database.EnsureCreated();
+        }
         public DbSet<Room> Rooms { get; set; }
         public DbSet<OccupyState> OccupyStates { get; set; }
 
