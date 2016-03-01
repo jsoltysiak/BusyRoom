@@ -7,6 +7,6 @@ namespace BusyRoom.Models
         public int Id { get; set; }
         public string Name { get; set; }
 
-        public ICollection<OccupyState> OccupyStates;
+        public ICollection<OccupyState> OccupyStates { get; set; }
     }
 }
