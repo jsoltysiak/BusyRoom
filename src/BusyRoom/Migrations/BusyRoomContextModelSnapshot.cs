@@ -25,8 +25,7 @@ namespace BusyRoom.Migrations
 
                     b.Property<bool>("IsBusy");
 
-                    b.Property<int?>("RoomId")
-                        .IsRequired();
+                    b.Property<int>("RoomId");
 
                     b.HasKey("Id");
                 });
