@@ -1,20 +1,22 @@
-﻿@model BusyRoom.Models.Room
+﻿@model IEnumerable<BusyRoom.Models.Room>
 
 @{
     ViewData["Title"] = "Home Page";
 }
 
+@foreach (var room in Model)
+{
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Room name: @room.Name</h2>
+            <p>Number of states: @room.OccupyStates.Count</p>
+            <ul>
+                @foreach (var occupyState in room.OccupyStates)
+                {
+                    <li>@occupyState.CreatedOn</li>
+                }
+            </ul>
+        </div>
 
-<div class="row">
-    <div class="col-md-12">
-        <h2>Room name: @Model.Name</h2>
-        <p>Number of states: @Model.OccupyStates.Count</p>
-        <ul>
-            @foreach (var occupyState in Model.OccupyStates)
-            {
-                <li>@occupyState.CreatedOn</li>
-            }
-        </ul>
     </div>
-    
-</div>
+}

@@ -7,16 +7,16 @@ namespace BusyRoom.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly BusyRoomContext _dbContext;
+        private readonly IBusyRoomRepository _repository;
 
-        public HomeController(BusyRoomContext dbContext)
+        public HomeController(BusyRoomContext dbContext, IBusyRoomRepository repository)
         {
-            _dbContext = dbContext;
+            _repository = repository;
         }
 
         public IActionResult Index()
         {
-            var rooms = _dbContext.Rooms.Include(n => n.OccupyStates).FirstOrDefault();
+            var rooms = _repository.GetAllRoomsWithOcupyStates();
             return View(rooms);
         }
 
