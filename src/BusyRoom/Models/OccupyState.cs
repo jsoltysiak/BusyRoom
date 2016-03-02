@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
 
 namespace BusyRoom.Models
 {
@@ -8,8 +7,8 @@ namespace BusyRoom.Models
         public int Id { get; set; }
         public DateTime CreatedOn { get; set; }
         public bool IsBusy { get; set; }
+        public int RoomId { get; set; }
 
-        [Required]
-        public Room Room { get; set; }
+        public virtual Room Room { get; set; }
     }
 }
