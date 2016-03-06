@@ -40,12 +40,16 @@ namespace BusyRoom.Controllers.Api
                 if (ModelState.IsValid)
                 {
                     var newRoom = Mapper.Map<Room>(roomViewModel);
-                    
+
                     // Save to the database
                     _logger.LogInformation("Attempting to save a new room");
+                    _repository.AddRoom(newRoom);
 
-                    Response.StatusCode = (int) HttpStatusCode.Created;
-                    return Json(Mapper.Map<RoomViewModel>(newRoom));
+                    if (_repository.SaveAll())
+                    {
+                        Response.StatusCode = (int) HttpStatusCode.Created;
+                        return Json(Mapper.Map<RoomViewModel>(newRoom));
+                    }
                 }
             }
             catch (Exception ex)
@@ -55,7 +59,7 @@ namespace BusyRoom.Controllers.Api
                 return Json(new {Message = ex.Message});
             }
             Response.StatusCode = (int) HttpStatusCode.BadRequest;
-            return Json(new { Errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage)} );
+            return Json(new {Errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage)});
         }
     }
 }

@@ -8,6 +8,8 @@ namespace BusyRoom.Models
     {
         IEnumerable<Room> GetAllRooms();
         IEnumerable<Room> GetAllRoomsWithOcupyStates();
+        void AddRoom(Room newRoom);
+        bool SaveAll();
     }
 
     public class BusyRoomRepository : IBusyRoomRepository
@@ -27,6 +29,16 @@ namespace BusyRoom.Models
         public IEnumerable<Room> GetAllRoomsWithOcupyStates()
         {
             return _dbContext.Rooms.Include(r => r.OccupyStates).OrderBy(r => r.Name).ToList();
+        }
+
+        public void AddRoom(Room newRoom)
+        {
+            _dbContext.Add(newRoom);
+        }
+
+        public bool SaveAll()
+        {
+            return _dbContext.SaveChanges() > 0;
         }
     }
 }
