@@ -13,12 +13,12 @@ using Microsoft.Extensions.Logging;
 namespace BusyRoom.Controllers.Api
 {
     [Route("api/[controller]")]
-    public class RoomsController : Controller
+    public class RoomController : Controller
     {
         private IBusyRoomRepository _repository;
-        private ILogger<RoomsController> _logger;
+        private ILogger<RoomController> _logger;
 
-        public RoomsController(IBusyRoomRepository repository, ILogger<RoomsController> logger)
+        public RoomController(IBusyRoomRepository repository, ILogger<RoomController> logger)
         {
             _repository = repository;
             _logger = logger;
