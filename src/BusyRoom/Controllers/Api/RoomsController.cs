@@ -1,5 +1,8 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net;
+using AutoMapper;
 using BusyRoom.Models;
 using BusyRoom.ViewModels;
 using Microsoft.AspNet.Mvc;
@@ -22,20 +25,27 @@ namespace BusyRoom.Controllers.Api
         [HttpGet]
         public JsonResult Get()
         {
-            var rooms = _repository.GetAllRoomsWithOcupyStates();
-            var json = Json(rooms);
-            return json;
+            var results = Mapper.Map<IEnumerable<RoomViewModel>>(_repository.GetAllRoomsWithOcupyStates());
+            return Json(results);
         }
 
         [HttpPost]
-        public JsonResult Post([FromBody] RoomViewModel room)
+        public JsonResult Post([FromBody] RoomViewModel roomViewModel)
         {
-            if (ModelState.IsValid)
+            try
             {
-                Response.StatusCode = (int) HttpStatusCode.Created;
-                return Json(room);
+                if (ModelState.IsValid)
+                {
+                    var newRoom = Mapper.Map<Room>(roomViewModel);
+                    Response.StatusCode = (int) HttpStatusCode.Created;
+                    return Json(Mapper.Map<RoomViewModel>(newRoom));
+                }
             }
-
+            catch (Exception ex)
+            {
+                Response.StatusCode = (int) HttpStatusCode.BadRequest;
+                return Json(new {Message = ex.Message});
+            }
             Response.StatusCode = (int) HttpStatusCode.BadRequest;
             return Json(ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage));
         }

@@ -1,5 +1,7 @@
-﻿using BusyRoom.Models;
+﻿using AutoMapper;
+using BusyRoom.Models;
 using BusyRoom.TestData;
+using BusyRoom.ViewModels;
 using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Hosting;
 using Microsoft.AspNet.Mvc;
@@ -50,6 +52,8 @@ namespace BusyRoom
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug(LogLevel.Information);
+
+            Mapper.Initialize(config => { config.CreateMap<Room, RoomViewModel>().ReverseMap(); });
 
             if (env.IsDevelopment())
             {
