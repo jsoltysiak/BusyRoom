@@ -6,6 +6,7 @@ using AutoMapper;
 using BusyRoom.Models;
 using BusyRoom.ViewModels;
 using Microsoft.AspNet.Mvc;
+using Microsoft.Extensions.Logging;
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -15,10 +16,12 @@ namespace BusyRoom.Controllers.Api
     public class RoomsController : Controller
     {
         private IBusyRoomRepository _repository;
+        private ILogger<RoomsController> _logger;
 
-        public RoomsController(IBusyRoomRepository repository)
+        public RoomsController(IBusyRoomRepository repository, ILogger<RoomsController> logger)
         {
             _repository = repository;
+            _logger = logger;
         }
 
         // GET: api/rooms
@@ -37,17 +40,22 @@ namespace BusyRoom.Controllers.Api
                 if (ModelState.IsValid)
                 {
                     var newRoom = Mapper.Map<Room>(roomViewModel);
+                    
+                    // Save to the database
+                    _logger.LogInformation("Attempting to save a new room");
+
                     Response.StatusCode = (int) HttpStatusCode.Created;
                     return Json(Mapper.Map<RoomViewModel>(newRoom));
                 }
             }
             catch (Exception ex)
             {
+                _logger.LogError("Failed to save new room", ex);
                 Response.StatusCode = (int) HttpStatusCode.BadRequest;
                 return Json(new {Message = ex.Message});
             }
             Response.StatusCode = (int) HttpStatusCode.BadRequest;
-            return Json(ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage));
+            return Json(new { Errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage)} );
         }
     }
 }
