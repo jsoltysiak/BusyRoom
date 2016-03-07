@@ -22,6 +22,7 @@ namespace BusyRoom.TestData
                 var foosball = new Room
                 {
                     Name = "Foosball",
+                    CreatedOn = DateTime.Now.AddDays(-4).AddSeconds(-8956),
                     OccupyStates = new List<OccupyState>
                     {
                         new OccupyState
@@ -49,6 +50,7 @@ namespace BusyRoom.TestData
                 var python = new Room
                 {
                     Name = "Python",
+                    CreatedOn = DateTime.Now,
                     OccupyStates = new List<OccupyState>
                     {
                         new OccupyState

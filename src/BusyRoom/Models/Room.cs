@@ -16,6 +16,8 @@ namespace BusyRoom.Models
         [Required]
         public string Name { get; set; }
 
+        public DateTime CreatedOn { get; set; }
+
         public virtual ICollection<OccupyState> OccupyStates { get; set; }
     }
 }
