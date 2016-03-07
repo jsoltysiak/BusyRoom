@@ -23,19 +23,19 @@ namespace BusyRoom.TestData
                 {
                     Name = "Foosball",
                     CreatedOn = DateTime.Now.AddDays(-4).AddSeconds(-8956),
-                    OccupyStates = new List<OccupyState>
+                    States = new List<State>
                     {
-                        new OccupyState
+                        new State
                         {
                             CreatedOn = DateTime.Now.AddDays(-2),
                             IsBusy = true
                         },
-                        new OccupyState
+                        new State
                         {
                             CreatedOn = DateTime.Now.AddHours(-1),
                             IsBusy = true
                         },
-                        new OccupyState
+                        new State
                         {
                             CreatedOn = DateTime.Now,
                             IsBusy = true
@@ -51,19 +51,19 @@ namespace BusyRoom.TestData
                 {
                     Name = "Python",
                     CreatedOn = DateTime.Now,
-                    OccupyStates = new List<OccupyState>
+                    States = new List<State>
                     {
-                        new OccupyState
+                        new State
                         {
                             CreatedOn = DateTime.Now.AddMinutes(-10),
                             IsBusy = true
                         },
-                        new OccupyState
+                        new State
                         {
                             CreatedOn = DateTime.Now.AddMinutes(-1),
                             IsBusy = true
                         },
-                        new OccupyState
+                        new State
                         {
                             CreatedOn = DateTime.Now,
                             IsBusy = true
@@ -72,7 +72,7 @@ namespace BusyRoom.TestData
                 };
 
                 _dbContext.Rooms.Add(python);
-                _dbContext.AddRange(python.OccupyStates);
+                _dbContext.AddRange(python.States);
 
                 _dbContext.SaveChanges();
             }

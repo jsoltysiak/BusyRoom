@@ -2,7 +2,7 @@
 
 namespace BusyRoom.Models
 {
-    public class OccupyState
+    public class State
     {
         public int Id { get; set; }
         public DateTime CreatedOn { get; set; }

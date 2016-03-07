@@ -9,11 +9,11 @@
     <div class="row">
         <div class="col-md-12">
             <h2>Room name: @room.Name</h2>
-            <p>Number of states: @room.OccupyStates.Count</p>
+            <p>Number of states: @room.States.Count</p>
             <ul>
-                @foreach (var occupyState in room.OccupyStates)
+                @foreach (var state in room.States)
                 {
-                    <li>@occupyState.CreatedOn</li>
+                    <li>@state.CreatedOn</li>
                 }
             </ul>
         </div>

@@ -9,7 +9,7 @@ namespace BusyRoom.Models
             Database.EnsureCreated();
         }
         public DbSet<Room> Rooms { get; set; }
-        public DbSet<OccupyState> OccupyStates { get; set; }
+        public DbSet<State> States { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

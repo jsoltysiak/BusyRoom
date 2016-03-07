@@ -28,7 +28,7 @@ namespace BusyRoom.Models
 
         public IEnumerable<Room> GetAllRoomsWithOcupyStates()
         {
-            return _dbContext.Rooms.Include(r => r.OccupyStates).OrderBy(r => r.Name).ToList();
+            return _dbContext.Rooms.Include(r => r.States).OrderBy(r => r.Name).ToList();
         }
 
         public void AddRoom(Room newRoom)

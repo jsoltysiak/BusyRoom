@@ -8,7 +8,7 @@ namespace BusyRoom.Models
     {
         public Room()
         {
-            OccupyStates = new HashSet<OccupyState>();
+            States = new HashSet<State>();
         }
 
         public int Id { get; set; }
@@ -18,6 +18,6 @@ namespace BusyRoom.Models
 
         public DateTime CreatedOn { get; set; }
 
-        public virtual ICollection<OccupyState> OccupyStates { get; set; }
+        public virtual ICollection<State> States { get; set; }
     }
 }
