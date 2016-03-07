@@ -17,5 +17,11 @@ namespace BusyRoom.Models
             optionsBuilder.UseSqlServer(connectionString);
             base.OnConfiguring(optionsBuilder);
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Room>().HasAlternateKey(r => r.Name).HasName("AlternateKey_Name");
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }

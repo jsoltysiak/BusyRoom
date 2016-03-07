@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace BusyRoom.Models
 {
@@ -10,6 +12,8 @@ namespace BusyRoom.Models
         }
 
         public int Id { get; set; }
+
+        [Required]
         public string Name { get; set; }
 
         public virtual ICollection<OccupyState> OccupyStates { get; set; }
