@@ -9,6 +9,7 @@ namespace BusyRoom.Models
         IEnumerable<Room> GetAllRooms();
         IEnumerable<Room> GetAllRoomsWithStates();
         void AddRoom(Room newRoom);
+        Room GetRoom(string roomName);
         bool SaveAll();
     }
 
@@ -34,6 +35,11 @@ namespace BusyRoom.Models
         public void AddRoom(Room newRoom)
         {
             _dbContext.Add(newRoom);
+        }
+
+        public Room GetRoom(string roomName)
+        {
+            return _dbContext.Rooms.Include(r => r.States).FirstOrDefault(r => r.Name == roomName);
         }
 
         public bool SaveAll()
