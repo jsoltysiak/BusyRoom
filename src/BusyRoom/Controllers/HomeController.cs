@@ -16,7 +16,7 @@ namespace BusyRoom.Controllers
 
         public IActionResult Index()
         {
-            var rooms = _repository.GetAllRoomsWithOcupyStates();
+            var rooms = _repository.GetAllRoomsWithStates();
             return View(rooms);
         }
 

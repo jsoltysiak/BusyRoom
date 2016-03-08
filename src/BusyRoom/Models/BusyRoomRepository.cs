@@ -7,7 +7,7 @@ namespace BusyRoom.Models
     public interface IBusyRoomRepository
     {
         IEnumerable<Room> GetAllRooms();
-        IEnumerable<Room> GetAllRoomsWithOcupyStates();
+        IEnumerable<Room> GetAllRoomsWithStates();
         void AddRoom(Room newRoom);
         bool SaveAll();
     }
@@ -26,7 +26,7 @@ namespace BusyRoom.Models
             return _dbContext.Rooms.OrderBy(r => r.Name).ToList();
         }
 
-        public IEnumerable<Room> GetAllRoomsWithOcupyStates()
+        public IEnumerable<Room> GetAllRoomsWithStates()
         {
             return _dbContext.Rooms.Include(r => r.States).OrderBy(r => r.Name).ToList();
         }

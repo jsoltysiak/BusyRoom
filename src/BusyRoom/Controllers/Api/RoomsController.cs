@@ -28,7 +28,7 @@ namespace BusyRoom.Controllers.Api
         [HttpGet]
         public JsonResult Get()
         {
-            var results = Mapper.Map<IEnumerable<RoomViewModel>>(_repository.GetAllRoomsWithOcupyStates());
+            var results = Mapper.Map<IEnumerable<RoomViewModel>>(_repository.GetAllRoomsWithStates());
             return Json(results);
         }
 
