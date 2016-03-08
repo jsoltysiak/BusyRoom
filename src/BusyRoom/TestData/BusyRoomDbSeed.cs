@@ -28,20 +28,19 @@ namespace BusyRoom.TestData
                         new State
                         {
                             CreatedOn = DateTime.Now.AddDays(-2),
-                            IsBusy = true
+                            IsOccupied = true
                         },
                         new State
                         {
                             CreatedOn = DateTime.Now.AddHours(-1),
-                            IsBusy = true
+                            IsOccupied = true
                         },
                         new State
                         {
                             CreatedOn = DateTime.Now,
-                            IsBusy = true
+                            IsOccupied = false
                         },
                     }
-                    
                 };
 
                 _dbContext.Rooms.Add(foosball);
@@ -56,17 +55,22 @@ namespace BusyRoom.TestData
                         new State
                         {
                             CreatedOn = DateTime.Now.AddMinutes(-10),
-                            IsBusy = true
+                            IsOccupied = true
                         },
                         new State
                         {
                             CreatedOn = DateTime.Now.AddMinutes(-1),
-                            IsBusy = true
+                            IsOccupied = false
                         },
                         new State
                         {
                             CreatedOn = DateTime.Now,
-                            IsBusy = true
+                            IsOccupied = true
+                        },
+                        new State
+                        {
+                            CreatedOn = DateTime.Now,
+                            IsOccupied = false
                         },
                     }
                 };

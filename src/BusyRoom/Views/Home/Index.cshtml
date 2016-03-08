@@ -13,7 +13,7 @@
             <ul>
                 @foreach (var state in room.States)
                 {
-                    <li>@state.CreatedOn</li>
+                    <li>@state.CreatedOn - @state.IsOccupied</li>
                 }
             </ul>
         </div>
