@@ -12,7 +12,7 @@ using Microsoft.Extensions.Logging;
 
 namespace BusyRoom.Controllers.Api
 {
-    [Route("api/[controller]")]
+    [Route("api/rooms")]
     public class RoomController : Controller
     {
         private IBusyRoomRepository _repository;
