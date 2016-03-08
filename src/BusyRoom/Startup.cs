@@ -58,7 +58,12 @@ namespace BusyRoom
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug(LogLevel.Information);
 
-            Mapper.Initialize(config => { config.CreateMap<Room, RoomViewModel>().ReverseMap(); });
+            Mapper.Initialize(
+                config =>
+                {
+                    config.CreateMap<Room, RoomViewModel>().ReverseMap();
+                    config.CreateMap<State, StateViewModel>().ReverseMap();
+                });
 
             if (env.IsDevelopment())
             {

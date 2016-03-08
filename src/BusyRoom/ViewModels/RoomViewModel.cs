@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace BusyRoom.ViewModels
@@ -14,5 +15,7 @@ namespace BusyRoom.ViewModels
         public string Name { get; set; }
 
         public DateTime CreatedOn { get; set; } = DateTime.Now;
+
+        public IEnumerable<StateViewModel> States { get; set; }
     }
 }
