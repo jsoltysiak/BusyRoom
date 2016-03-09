@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Threading.Tasks;
 using AutoMapper;
 using BusyRoom.Models;
 using BusyRoom.ViewModels;
@@ -16,8 +15,8 @@ namespace BusyRoom.Controllers.Api
     [Route("api/rooms/{roomName}/[controller]")]
     public class StatesController : Controller
     {
-        private IBusyRoomRepository _repository;
-        private ILogger<StatesController> _logger;
+        private readonly ILogger<StatesController> _logger;
+        private readonly IBusyRoomRepository _repository;
 
         public StatesController(IBusyRoomRepository repository, ILogger<StatesController> logger)
         {
@@ -30,7 +29,7 @@ namespace BusyRoom.Controllers.Api
         {
             try
             {
-                Room room = _repository.GetRoom(roomName);
+                var room = _repository.GetRoom(roomName);
 
                 if (room == null)
                 {
@@ -41,9 +40,11 @@ namespace BusyRoom.Controllers.Api
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Failed to get states for room {roomName}", ex);
+                var message = $"Error occurred while getting states for room {roomName}";
+                _logger.LogError(message, ex);
                 Response.StatusCode = (int) HttpStatusCode.BadRequest;
-                return Json($"Error occurred finding room with name {roomName}");
+
+                return Json(message);
             }
         }
 
