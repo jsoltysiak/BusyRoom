@@ -11,6 +11,7 @@ namespace BusyRoom.Models
         void AddRoom(Room newRoom);
         Room GetRoom(string roomName);
         bool SaveAll();
+        void AddState(string roomName, State newState);
     }
 
     public class BusyRoomRepository : IBusyRoomRepository
@@ -45,6 +46,13 @@ namespace BusyRoom.Models
         public bool SaveAll()
         {
             return _dbContext.SaveChanges() > 0;
+        }
+
+        public void AddState(string roomName, State newState)
+        {
+            var room = GetRoom(roomName);
+            room.States.Add(newState);
+            _dbContext.States.Add(newState);
         }
     }
 }
