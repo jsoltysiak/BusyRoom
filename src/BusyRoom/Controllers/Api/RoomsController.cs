@@ -15,8 +15,8 @@ namespace BusyRoom.Controllers.Api
     [Route("api/[controller]")]
     public class RoomsController : Controller
     {
-        private IBusyRoomRepository _repository;
-        private ILogger<RoomsController> _logger;
+        private readonly IBusyRoomRepository _repository;
+        private readonly ILogger<RoomsController> _logger;
 
         public RoomsController(IBusyRoomRepository repository, ILogger<RoomsController> logger)
         {
