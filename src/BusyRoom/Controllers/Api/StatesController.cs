@@ -49,8 +49,35 @@ namespace BusyRoom.Controllers.Api
         }
 
         [HttpPost]
-        public void Post([FromBody] string value)
+        public JsonResult Post(string roomName, [FromBody] StateViewModel stateViewModel)
         {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    // Map to the Entity
+                    var newState = Mapper.Map<State>(stateViewModel);
+
+                    // Save to the Database
+                    _repository.AddState(roomName, newState);
+
+                    if (_repository.SaveAll())
+                    {
+                        Response.StatusCode = (int) HttpStatusCode.Created;
+                        return Json(Mapper.Map<StateViewModel>(newState));
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                var message = $"Failed to save new state for room {roomName}";
+                _logger.LogError(message, ex);
+                Response.StatusCode = (int) HttpStatusCode.BadRequest;
+                return Json(message);
+            }
+
+            Response.StatusCode = (int) HttpStatusCode.BadRequest;
+            return Json(new {Message = "Failed", ModelState = ModelState});
         }
     }
 }
