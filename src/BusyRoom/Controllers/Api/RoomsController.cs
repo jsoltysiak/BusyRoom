@@ -59,7 +59,7 @@ namespace BusyRoom.Controllers.Api
                 return Json(new {Message = ex.Message});
             }
             Response.StatusCode = (int) HttpStatusCode.BadRequest;
-            return Json(new {Errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage)});
+            return Json(new {Message = "Failed", ModelState = ModelState});
         }
     }
 }
