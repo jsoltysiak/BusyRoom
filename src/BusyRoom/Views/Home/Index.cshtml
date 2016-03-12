@@ -12,12 +12,6 @@
         <div class="col-md-12">
             <h2>Room name: @room.Name</h2>
             <p>Number of states: @room.States.Count</p>
-            <ul>
-                @foreach (var state in room.States)
-                {
-                    <li>@state.CreatedOn - @state.IsOccupied</li>
-                }
-            </ul>
         </div>
 
     </div>
