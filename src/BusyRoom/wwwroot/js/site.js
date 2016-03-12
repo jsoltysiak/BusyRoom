@@ -14,7 +14,7 @@ var occupied = [];
 
 var chartOptions = {
     low: 0,
-    high: 2,
+    high: 1,
     showArea: true,
     axisY: {
         onlyInteger: true,
@@ -39,9 +39,9 @@ $(function() {
         });
 
         var data = {
-            labels: dates,
+            labels: dates.slice(Math.max(dates.length - 30)),
             series: [
-                occupied
+                occupied.slice(Math.max(occupied.length - 30))
             ]
     };
 
