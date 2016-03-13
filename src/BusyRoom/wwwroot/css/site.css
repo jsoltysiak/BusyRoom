@@ -1,34 +1,32 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
-}
+@import url(https://fonts.googleapis.com/css?family=Nunito:700,400);
+body {
+  padding-top: 50px;
+  padding-bottom: 20px; }
 
-/* Wrapping element */
-/* Set some basic padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
-}
+  padding-left: 15px;
+  padding-right: 15px; }
 
-/* Set widths on the form inputs since otherwise they're 100% wide */
-input,
-select,
-textarea {
-    max-width: 280px;
-}
+#occupiedArea {
+  border-radius: 50px;
+  height: 80px;
+  width: 100%;
+  background: #ea4611;
+  padding: 13px;
+  text-align: center;
+  -webkit-box-shadow: inset 0px 3px 12px 0px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: inset 0px 3px 12px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0px 3px 12px 0px rgba(0, 0, 0, 0.5); }
+  #occupiedArea span {
+    color: #FFF;
+    font-family: 'Nunito', sans-serif;
+    font-size: 40px; }
+  #occupiedArea.free {
+    background: #6cd52c; }
 
-/* Carousel */
-.carousel-caption {
-    z-index: 10 !important;
-}
-
-    .carousel-caption p {
-        font-size: 20px;
-        line-height: 1.4;
-    }
-
-@media (min-width: 768px) {
-    .carousel-caption {
-        z-index: 10 !important;
-    }
-}
+/* Use this selector to override the line style on a given series */
+.ct-series-a .ct-line {
+  /* Set the colour of this series line */
+  stroke: #6cd52c;
+  /* Control the thikness of your lines */
+  stroke-width: 5px; }

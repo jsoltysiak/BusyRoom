@@ -1,9 +1,6 @@
 ﻿// Write your Javascript code.
 
 
-//var options = {
-//    height: 200
-//};
 
 
 var now = new Date().getTime();

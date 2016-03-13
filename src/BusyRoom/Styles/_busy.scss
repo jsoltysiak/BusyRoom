@@ -1,0 +1,32 @@
+﻿@import url(https://fonts.googleapis.com/css?family=Nunito:700,400);
+
+#occupiedArea {
+    border-radius: 50px;
+    height: 80px;
+    width: 100%;
+    background: #ea4611;
+    padding: 13px;
+    text-align: center;
+
+    -webkit-box-shadow: inset 0px 3px 12px 0px rgba(0,0,0,0.5);
+    -moz-box-shadow: inset 0px 3px 12px 0px rgba(0,0,0,0.5);
+    box-shadow: inset 0px 3px 12px 0px rgba(0,0,0,0.5);
+
+    span {
+        color: #FFF;
+        font-family: 'Nunito', sans-serif;
+        font-size: 40px;
+    }
+
+    &.free {
+        background: #6cd52c;
+    }
+}
+
+/* Use this selector to override the line style on a given series */
+.ct-series-a .ct-line {
+  /* Set the colour of this series line */
+  stroke: #6cd52c;
+  /* Control the thikness of your lines */
+  stroke-width: 5px;
+}

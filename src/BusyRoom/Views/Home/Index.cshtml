@@ -2,17 +2,27 @@
 
 @{
     ViewData["Title"] = "Home Page";
+    var isOccupied = Model.First().States.Last().IsOccupied;
+    var occupiedText = isOccupied ? "OCCUPIED" : "FREE";
+    var occupiedClass = isOccupied ? "" : "free";
 }
 
-<div class="ct-chart ct-double-octave" id="chart1"></div>
-
-@foreach (var room in Model)
-{
-    <div class="row">
-        <div class="col-md-12">
-            <h2>Room name: @room.Name</h2>
-            <p>Number of states: @room.States.Count</p>
-        </div>
-
+<div class="row">
+    <div class="col-md-4">
+        <h2>Room name: @Model.First().Name</h2>
+        <p>Number of states: @Model.First().States.Count</p>
     </div>
-}
+</div>
+
+<div class="row">
+    <div class="col-md-4 col-md-offset-4">
+        <div class="@occupiedClass" id="occupiedArea">
+            <span>@occupiedText</span>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="ct-chart ct-double-octave" id="chart1"></div>
+</div>
+
