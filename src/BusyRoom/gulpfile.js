@@ -1,14 +1,16 @@
-﻿/// <binding Clean='clean' />
+﻿/// <binding AfterBuild='sass' Clean='clean' />
 "use strict";
 
 var gulp = require("gulp"),
     rimraf = require("rimraf"),
     concat = require("gulp-concat"),
+    sass = require("gulp-sass"),
     cssmin = require("gulp-cssmin"),
     uglify = require("gulp-uglify");
 
 var paths = {
-    webroot: "./wwwroot/"
+    webroot: "./wwwroot/",
+    styles: "./Styles/"
 };
 
 paths.js = paths.webroot + "js/**/*.js";
@@ -43,3 +45,9 @@ gulp.task("min:css", function () {
 });
 
 gulp.task("min", ["min:js", "min:css"]);
+
+gulp.task("sass", function() {
+    return gulp.src(paths.styles + '**/*.scss')
+        .pipe(sass().on('error', sass.logError))
+        .pipe(gulp.dest(paths.webroot + 'css'));
+})
