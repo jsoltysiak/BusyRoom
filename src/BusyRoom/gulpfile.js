@@ -1,4 +1,4 @@
-﻿/// <binding AfterBuild='sass' Clean='clean' />
+﻿/// <binding AfterBuild='sass' Clean='clean' ProjectOpened='watch' />
 "use strict";
 
 var gulp = require("gulp"),
@@ -6,6 +6,7 @@ var gulp = require("gulp"),
     concat = require("gulp-concat"),
     sass = require("gulp-sass"),
     cssmin = require("gulp-cssmin"),
+    watch = require("gulp-watch"),
     uglify = require("gulp-uglify");
 
 var paths = {
@@ -15,6 +16,7 @@ var paths = {
 
 paths.js = paths.webroot + "js/**/*.js";
 paths.minJs = paths.webroot + "js/**/*.min.js";
+paths.scss = paths.styles + '**/*.scss';
 paths.css = paths.webroot + "css/**/*.css";
 paths.minCss = paths.webroot + "css/**/*.min.css";
 paths.concatJsDest = paths.webroot + "js/site.min.js";
@@ -46,8 +48,14 @@ gulp.task("min:css", function () {
 
 gulp.task("min", ["min:js", "min:css"]);
 
-gulp.task("sass", function() {
-    return gulp.src(paths.styles + '**/*.scss')
+gulp.task("sass", function () {
+    return gulp.src(paths.scss)
         .pipe(sass().on('error', sass.logError))
         .pipe(gulp.dest(paths.webroot + 'css'));
-})
+});
+
+gulp.task("watch", function () {
+    watch(paths.scss, function() {
+        gulp.start('sass');
+    });
+});
