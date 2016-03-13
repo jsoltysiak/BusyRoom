@@ -22,11 +22,3 @@
         background: #6cd52c;
     }
 }
-
-/* Use this selector to override the line style on a given series */
-.ct-series-a .ct-line {
-  /* Set the colour of this series line */
-  stroke: #6cd52c;
-  /* Control the thikness of your lines */
-  stroke-width: 5px;
-}

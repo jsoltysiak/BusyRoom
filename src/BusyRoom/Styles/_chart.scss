@@ -1,0 +1,11 @@
+﻿/* Use this selector to override the line style on a given series */
+.ct-series-a {
+    .ct-line {
+        stroke: #6cd52c;
+        stroke-width: 5px;
+    }
+
+    .ct-area {
+        fill: #6cd52c;
+    }
+}
