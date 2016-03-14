@@ -25,15 +25,18 @@ $(function() {
     $.getJSON("/api/rooms/Arduino/states", function(response) {
         states = response;
 
-        dates = $.map(states, function (el) {
-            var date = new Date(el.createdOn).getTime() - now;
-            return Math.round(date / 60000);
-            
-        });
+        if (states) {
+            dates = $.map(states, function(el) {
+                var date = new Date(el.createdOn).getTime() - now;
+                return Math.round(date / 60000);
 
-        occupied = $.map(states, function (el) {
-            return el.isOccupied ? 1 : 0;
-        });
+            });
+
+            occupied = $.map(states, function(el) {
+                return el.isOccupied ? 1 : 0;
+            });
+
+        }
 
         var data = {
             labels: dates.slice(Math.max(dates.length - 30)),
