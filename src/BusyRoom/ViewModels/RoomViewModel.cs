@@ -14,7 +14,7 @@ namespace BusyRoom.ViewModels
             ErrorMessage = "{0} must be a single word and start with a letter.")]
         public string Name { get; set; }
 
-        public DateTime CreatedOn { get; set; } = DateTime.Now;
+        public DateTime CreatedOn { get; set; } = DateTime.UtcNow;
 
         public IEnumerable<StateViewModel> States { get; set; }
     }
