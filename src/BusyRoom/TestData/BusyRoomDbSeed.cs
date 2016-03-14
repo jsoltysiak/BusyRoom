@@ -16,69 +16,58 @@ namespace BusyRoom.TestData
 
         public void EnsureSeedData()
         {
+            // Ensure the database exists
             _dbContext.Database.EnsureCreated();
 
             if (!_dbContext.Rooms.Any())
             {
-                //Add new data
-                var foosball = new Room
+                // Add new data
+                var arduino = new Room
                 {
-                    Name = "Foosball",
-                    CreatedOn = DateTime.Now.AddDays(-4).AddSeconds(-8956),
+                    Name = "Arduino",
+                    CreatedOn = DateTime.UtcNow.AddDays(-4),
                     States = new List<State>
                     {
                         new State
                         {
-                            CreatedOn = DateTime.Now.AddDays(-2),
+                            CreatedOn = DateTime.UtcNow.AddMinutes(-6),
                             IsOccupied = true
                         },
                         new State
                         {
-                            CreatedOn = DateTime.Now.AddHours(-1),
-                            IsOccupied = true
-                        },
-                        new State
-                        {
-                            CreatedOn = DateTime.Now,
+                            CreatedOn = DateTime.UtcNow.AddMinutes(-5),
                             IsOccupied = false
+                        },
+                        new State
+                        {
+                            CreatedOn = DateTime.UtcNow.AddMinutes(-4),
+                            IsOccupied = false
+                        },
+                        new State
+                        {
+                            CreatedOn = DateTime.UtcNow.AddMinutes(-3),
+                            IsOccupied = true
+                        },
+                        new State
+                        {
+                            CreatedOn = DateTime.UtcNow.AddMinutes(-2),
+                            IsOccupied = false
+                        },
+                        new State
+                        {
+                            CreatedOn = DateTime.UtcNow.AddMinutes(-1),
+                            IsOccupied = true
+                        },
+                        new State
+                        {
+                            CreatedOn = DateTime.UtcNow,
+                            IsOccupied = true
                         },
                     }
                 };
 
-                _dbContext.Rooms.Add(foosball);
+                _dbContext.Rooms.Add(arduino);
                 _dbContext.AddRange();
-
-                var python = new Room
-                {
-                    Name = "Python",
-                    CreatedOn = DateTime.Now,
-                    States = new List<State>
-                    {
-                        new State
-                        {
-                            CreatedOn = DateTime.Now.AddMinutes(-10),
-                            IsOccupied = true
-                        },
-                        new State
-                        {
-                            CreatedOn = DateTime.Now.AddMinutes(-1),
-                            IsOccupied = false
-                        },
-                        new State
-                        {
-                            CreatedOn = DateTime.Now,
-                            IsOccupied = true
-                        },
-                        new State
-                        {
-                            CreatedOn = DateTime.Now,
-                            IsOccupied = false
-                        },
-                    }
-                };
-
-                _dbContext.Rooms.Add(python);
-                _dbContext.AddRange(python.States);
 
                 _dbContext.SaveChanges();
             }
