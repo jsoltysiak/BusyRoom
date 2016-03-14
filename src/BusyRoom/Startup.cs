@@ -67,6 +67,8 @@ namespace BusyRoom
 
             if (env.IsDevelopment())
             {
+                seeder.EnsureSeedData();
+
                 app.UseBrowserLink();
                 app.UseDeveloperExceptionPage();
             }
@@ -80,8 +82,6 @@ namespace BusyRoom
             app.UseStaticFiles();
 
             app.UseMvc(routes => { routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}"); });
-
-            seeder.EnsureSeedData();
         }
 
         // Entry point for the application.
