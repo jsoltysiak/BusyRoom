@@ -16,6 +16,8 @@ namespace BusyRoom.TestData
 
         public void EnsureSeedData()
         {
+            _dbContext.Database.EnsureCreated();
+
             if (!_dbContext.Rooms.Any())
             {
                 //Add new data
