@@ -17,7 +17,7 @@ namespace BusyRoom.Models
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Room>().HasAlternateKey(r => r.Name).HasName("AlternateKey_Name");
-            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Room>().HasMany(r => r.States).WithOne(s => s.Room).IsRequired();
         }
     }
 }
