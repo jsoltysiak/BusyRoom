@@ -1,0 +1,66 @@
+﻿@charset "UTF-8";
+
+// Spaces
+//----------------------------
+$space-none: 0px;
+$space-x-small: 1.5px;
+$space-small: 5px;
+$space-medium: 10px;
+$space-large: 20px;
+$space-x-large: 40px;
+
+.ptn, .pvn, .pan {padding-top: $space-none}
+.ptxs,.pvxs,.paxs{padding-top: $space-x-small}
+.pts, .pvs, .pas {padding-top: $space-small}
+.ptm, .pvm, .pam {padding-top: $space-medium}
+.ptl, .pvl, .pal {padding-top: $space-large}
+.ptxl,.pvxl,.paxl{padding-top: $space-x-large}
+
+.prn, .phn, .pan {padding-right: $space-none}
+.prxs,.phxs,.paxs{padding-right: $space-x-small}
+.prs, .phs, .pas {padding-right: $space-small}
+.prm, .phm, .pam {padding-right: $space-medium}
+.prl, .phl, .pal {padding-right: $space-large}
+.prxl,.phxl,.paxl{padding-right: $space-x-large}
+
+.pbn, .pvn, .pan {padding-bottom: $space-none}
+.pbxs,.pvxs,.paxs{padding-bottom: $space-x-small}
+.pbs, .pvs, .pas {padding-bottom: $space-small}
+.pbm, .pvm, .pam {padding-bottom: $space-medium}
+.pbl, .pvl, .pal {padding-bottom: $space-large}
+.pbxl,.pvxl,.paxl{padding-bottom: $space-x-large}
+
+.pln, .phn, .pan {padding-left: $space-none}
+.plxs,.phxs,.paxs{padding-left: $space-x-small}
+.pls, .phs, .pas {padding-left: $space-small}
+.plm, .phm, .pam {padding-left: $space-medium}
+.pll, .phl, .pal {padding-left: $space-large}
+.plxl,.phxl,.paxl{padding-left: $space-x-large}
+
+.mtn, .mvn, .man {margin-top: $space-none}
+.mtxs,.mvxs,.maxs{margin-top: $space-x-small}
+.mts, .mvs, .mas {margin-top: $space-small}
+.mtm, .mvm, .mam {margin-top: $space-medium}
+.mtl, .mvl, .mal {margin-top: $space-large}
+.mtxl,.mvxl,.maxl{margin-top: $space-x-large}
+
+.mrn, .mhn, .man {margin-right: $space-none}
+.mrxs,.mhxs,.maxs{margin-right: $space-x-small}
+.mrs, .mhs, .mas {margin-right: $space-small}
+.mrm, .mhm, .mam {margin-right: $space-medium}
+.mrl, .mhl, .mal {margin-right: $space-large}
+.mrxl,.mhxl,.maxl{margin-right: $space-x-large}
+
+.mbn, .mvn, .man {margin-bottom: $space-none}
+.mbxs,.mvxs,.maxs{margin-bottom: $space-x-small}
+.mbs, .mvs, .mas {margin-bottom: $space-small}
+.mbm, .mvm, .mam {margin-bottom: $space-medium}
+.mbl, .mvl, .mal {margin-bottom: $space-large}
+.mbxl,.mvxl,.maxl{margin-bottom: $space-x-large}
+
+.mln, .mhn, .man {margin-left: $space-none}
+.mlxs,.mhxs,.maxs{margin-left: $space-x-small}
+.mls, .mhs, .mas {margin-left: $space-small}
+.mlm, .mhm, .mam {margin-left: $space-medium}
+.mll, .mhl, .mal {margin-left: $space-large}
+.mlxl,.mhxl,.maxl{margin-left: $space-x-large}
