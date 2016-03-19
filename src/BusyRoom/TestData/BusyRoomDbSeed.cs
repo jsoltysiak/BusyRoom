@@ -31,37 +31,58 @@ namespace BusyRoom.TestData
                         new State
                         {
                             CreatedOn = DateTime.UtcNow.AddMinutes(-6),
-                            IsOccupied = true
+                            IsOccupied = true,
+                            Temperature = 23.5,
+                            Humidity = 40,
+                            Brightness = 8
                         },
                         new State
                         {
                             CreatedOn = DateTime.UtcNow.AddMinutes(-5),
-                            IsOccupied = false
+                            IsOccupied = false,
+                            Temperature = 24.5,
+                            Humidity = 57,
+                            Brightness = 9
                         },
                         new State
                         {
                             CreatedOn = DateTime.UtcNow.AddMinutes(-4),
-                            IsOccupied = false
+                            IsOccupied = false,
+                            Temperature = 22.0,
+                            Humidity = 49,
+                            Brightness = 3
                         },
                         new State
                         {
                             CreatedOn = DateTime.UtcNow.AddMinutes(-3),
-                            IsOccupied = true
+                            IsOccupied = true,
+                            Temperature = 25.5,
+                            Humidity = 33,
+                            Brightness = 2
                         },
                         new State
                         {
                             CreatedOn = DateTime.UtcNow.AddMinutes(-2),
-                            IsOccupied = false
+                            IsOccupied = false,
+                            Temperature = 26,
+                            Humidity = 35,
+                            Brightness = 7
                         },
                         new State
                         {
                             CreatedOn = DateTime.UtcNow.AddMinutes(-1),
-                            IsOccupied = true
+                            IsOccupied = true,
+                            Temperature = 26.5,
+                            Humidity = 43,
+                            Brightness = 6
                         },
                         new State
                         {
                             CreatedOn = DateTime.UtcNow,
-                            IsOccupied = true
+                            IsOccupied = true,
+                            Temperature = 24.0,
+                            Humidity = 46,
+                            Brightness = 8
                         },
                     }
                 };
