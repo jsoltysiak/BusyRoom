@@ -27,10 +27,13 @@
 </div>
 
 <div class="row lcd">
-    <div class="col-md-6">
-        <span>Temperature: 24°C</span>
+    <div class="col-md-4">
+        <span>Temperature: @Model.First().States.Last().Temperature°C</span>
     </div>
-    <div class="col-md-6">
-        <span>Humidity: 41%</span>
+    <div class="col-md-4">
+        <span>Humidity: @Model.First().States.Last().Humidity%</span>
+    </div>
+    <div class="col-md-4">
+        <span>Brightness: @Model.First().States.Last().Brightness/9</span>
     </div>
 </div>
